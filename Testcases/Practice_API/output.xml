@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.0.1 (Python 3.10.12 on linux)" generated="2024-07-31T15:03:05.964724" rpa="false" schemaversion="5">
+<suite id="s1" name="GET Testcase" source="/home/manideepkoti/Downloads/Testcases/Practice_API/GET_Testcase.robot">
+<test id="s1-t1" name="Get_Testcase" line="10">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2024-07-31T15:03:06.047265" level="INFO">Creating Session using : alias=mySession, url=https://api.restful-api.dev, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>mySession</arg>
+<arg>${base_url}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2024-07-31T15:03:06.047040" elapsed="0.000434"/>
+</kw>
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2024-07-31T15:03:06.816981" level="INFO">GET Request : url=https://api.restful-api.dev/objects/1 
+ path_url=/objects/1 
+ headers={'User-Agent': 'python-requests/2.25.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2024-07-31T15:03:06.817132" level="INFO">GET Response : url=https://api.restful-api.dev/objects/1 
+ status=200, reason= 
+ headers={'Date': 'Wed, 31 Jul 2024 09:33:06 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Vary': 'Origin, Access-Control-Request-Method, Access-Control-Request-Headers', 'CF-Cache-Status': 'DYNAMIC', 'Report-To': '{"endpoints":[{"url":"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=ZQTJ%2FoH9vdJQf08YHWIn1OXsURRxcBuy3KY%2Fm23V0xJIcCdizAgX8Y%2BNTSG7fBVNtB%2FwJUWu1Ds2aN5pAxJ%2F%2BaDotd4KIjTx1gYpdlGauGg3E8kvO967%2FWPDCI2UrZ5o1hFa0U1p"}],"group":"cf-nel","max_age":604800}', 'NEL': '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}', 'Server': 'cloudflare', 'CF-RAY': '8abc95c3bc314b56-SIN', 'Content-Encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400'} 
+ body={"id":"1","name":"Google Pixel 6 Pro","data":{"color":"Cloudy White","capacity":"128 GB"}} 
+ </msg>
+<msg time="2024-07-31T15:03:06.817312" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>mySession</arg>
+<arg>/${rel_url}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2024-07-31T15:03:06.047644" elapsed="0.769707"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${response.status_code}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-07-31T15:03:06.817617" elapsed="0.000670"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${response.content}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-07-31T15:03:06.818476" elapsed="0.000578"/>
+</kw>
+<kw name="Convert To String" owner="BuiltIn">
+<msg time="2024-07-31T15:03:06.819931" level="INFO">${is_status_code_equal} = 200</msg>
+<var>${is_status_code_equal}</var>
+<arg>${response.status_code}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<status status="PASS" start="2024-07-31T15:03:06.819236" elapsed="0.000731"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${is_status_code_equal}</arg>
+<arg>200</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2024-07-31T15:03:06.820172" elapsed="0.000261"/>
+</kw>
+<status status="PASS" start="2024-07-31T15:03:06.046356" elapsed="0.774276"/>
+</test>
+<status status="PASS" start="2024-07-31T15:03:05.965736" elapsed="0.855387"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="GET Testcase">GET Testcase</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

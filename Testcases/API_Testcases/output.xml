@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.0.1 (Python 3.10.12 on linux)" generated="2024-08-06T11:33:08.069249" rpa="false" schemaversion="5">
+<suite id="s1" name="GET Testcase" source="/home/manideepkoti/Downloads/Testcases/API_Testcases/GET_Testcase.robot">
+<test id="s1-t1" name="Get_WeatherInfo" line="10">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2024-08-06T11:33:08.177427" level="INFO">Creating Session using : alias=mySession, url=https://catfact.ninja, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>mySession</arg>
+<arg>${base_url}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2024-08-06T11:33:08.177218" elapsed="0.000511"/>
+</kw>
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2024-08-06T11:33:09.387442" level="INFO">GET Request : url=https://catfact.ninja/fact 
+ path_url=/fact 
+ headers={'User-Agent': 'python-requests/2.25.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2024-08-06T11:33:09.387893" level="INFO">GET Response : url=https://catfact.ninja/fact 
+ status=200, reason=OK 
+ headers={'Server': 'nginx', 'Date': 'Tue, 06 Aug 2024 06:03:09 GMT', 'Content-Type': 'application/json', 'Content-Length': '165', 'Connection': 'keep-alive', 'Cache-Control': 'no-cache, private', 'X-Ratelimit-Limit': '100', 'X-Ratelimit-Remaining': '99', 'Access-Control-Allow-Origin': '*', 'Set-Cookie': 'XSRF-TOKEN=eyJpdiI6IjFNU1huM3JUY2gzczNxZjRuVGJlRHc9PSIsInZhbHVlIjoiWUNSb1o4bStwamxOcjN3dDl1NXRXWVlqSE9jMS9oZitFaHJBQkVVQkUvQ080c2pLOWM0RmRqOENndTNweVRzNm93ZUhuOVhHSE9CTjlaOTVSSU4rMHZUSGlEVEFLQlJPdzNza2xWL2ZFZmhPcG9Lck1LVU5kR2VXdERVN3U0aU4iLCJtYWMiOiJlNmUzODBjZTUxMzRlYjQ5NGM3ZTc4MjEzNDc1NzY2MDU4NTQyMWRkNzdkYzVjYTBjZjRlZjdlODc5YjMzMzYzIiwidGFnIjoiIn0%3D; expires=Tue, 06-Aug-2024 08:03:09 GMT; Max-Age=7200; path=/; secure; samesite=lax, catfacts_session=eyJpdiI6IjV4MFJTcktpb1dPOGdkaXIzRjIrZ2c9PSIsInZhbHVlIjoicWZGOFpUd280NHo4Q2VIZjhFWGhLSW96RDltN1ZQakxyTlhHSkZmWXlnemRZc1hURnBmcW9pUlFOMUI5cFhGaXZEaU5ud3diNUpSMW9UMHNvZGNkS3pvQW5oa3RpdW8wMytzWGxmSEoyc1RaemFDUnRDVkhINnNmQTBoTGgxUlkiLCJtYWMiOiJlZjc5NTk4MzUyMzFhN2Q5ODI3YjkyNmIwYzNmYzRmMzQzODZmMjZkYmFlNTM5MmRmNGQ5Y2I5MTNlYmQyOTg1IiwidGFnIjoiIn0%3D; expires=Tue, 06-Aug-2024 08:03:09 GMT; Max-Age=7200; path=/; httponly; samesite=lax', 'X-Frame-Options': 'SAMEORIGIN', 'X-XSS-Protection': '1; mode=block', 'X-Content-Type-Options': 'nosniff'} 
+ body={"fact":"Contrary to popular belief, the cat is a social animal. A pet cat will respond and answer to speech , and seems to enjoy human companionship.","length":141} 
+ </msg>
+<msg time="2024-08-06T11:33:09.388421" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>mySession</arg>
+<arg>/${city}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2024-08-06T11:33:08.178079" elapsed="1.210639"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${response.status_code}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-08-06T11:33:09.389541" elapsed="0.002122"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${response.content}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-08-06T11:33:09.392282" elapsed="0.001946"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${response.headers}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-08-06T11:33:09.394961" elapsed="0.002684"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-08-06T11:33:09.399110" level="INFO">${Status_Code} = </msg>
+<var>${Status_Code}</var>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-08-06T11:33:09.398411" elapsed="0.000824"/>
+</kw>
+<kw name="Convert To String" owner="BuiltIn">
+<msg time="2024-08-06T11:33:09.402469" level="INFO">${Status_Code} = 200</msg>
+<var>${Status_Code}</var>
+<arg>${response.status_code}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<status status="PASS" start="2024-08-06T11:33:09.400002" elapsed="0.002609"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${Status_Code}</arg>
+<arg>200</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2024-08-06T11:33:09.403410" elapsed="0.001088"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2024-08-06T11:33:09.408097" level="INFO">${content_type} = application/json</msg>
+<var>${content_type}</var>
+<arg>${response.headers}</arg>
+<arg>Content-Type</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2024-08-06T11:33:09.405237" elapsed="0.003075"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${content_type}</arg>
+<arg>application/json</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2024-08-06T11:33:09.409675" elapsed="0.001391"/>
+</kw>
+<status status="PASS" start="2024-08-06T11:33:08.176284" elapsed="1.235862"/>
+</test>
+<status status="PASS" start="2024-08-06T11:33:08.072001" elapsed="1.342228"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="GET Testcase">GET Testcase</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.0.1 (Python 3.10.12 on linux)" generated="2024-07-30T18:50:20.990990" rpa="false" schemaversion="5">
+<suite id="s1" name="POST Testcase" source="/home/manideepkoti/Downloads/Testcases/API_Testcases/POST_Testcase.robot">
+<test id="s1-t1" name="Put_Objects" line="54">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2024-07-30T18:50:21.115023" level="INFO">Creating Session using : alias=mySession, url=https://api.restful-api.dev, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>mySession</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2024-07-30T18:50:21.114606" elapsed="0.001557"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-07-30T18:50:21.118269" level="INFO">${body} = {'{ "name": "Apple MacBook Pro 16",': '"data": {', '"year": 2019,': '"price": 1849.99, "CPU model": "Intel Core i9", "Hard disk size": "1 TB"} }'}</msg>
+<var>${body}</var>
+<arg>{ "name": "Apple MacBook Pro 16",</arg>
+<arg>"data": {</arg>
+<arg>"year": 2019,</arg>
+<arg>"price": 1849.99, "CPU model": "Intel Core i9", "Hard disk size": "1 TB"} }</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-07-30T18:50:21.116736" elapsed="0.001745"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-07-30T18:50:21.119315" level="INFO">${header} = {'Content-Type': 'application/json'}</msg>
+<var>${header}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-07-30T18:50:21.118861" elapsed="0.000623"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2024-07-30T18:50:22.414122" level="INFO">POST Request : url=https://api.restful-api.dev/objects 
+ path_url=/objects 
+ headers={'User-Agent': 'python-requests/2.25.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '164'} 
+ body=b'{"{ \\"name\\": \\"Apple MacBook Pro 16\\",": "\\"data\\": {", "\\"year\\": 2019,": "\\"price\\": 1849.99, \\"CPU model\\": \\"Intel Core i9\\", \\"Hard disk size\\": \\"1 TB\\"} }"}' 
+ </msg>
+<msg time="2024-07-30T18:50:22.414718" level="INFO">POST Response : url=https://api.restful-api.dev/objects 
+ status=200, reason= 
+ headers={'Date': 'Tue, 30 Jul 2024 13:20:22 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Vary': 'Origin, Access-Control-Request-Method, Access-Control-Request-Headers', 'CF-Cache-Status': 'DYNAMIC', 'Report-To': '{"endpoints":[{"url":"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=1GjjGsU3i7YldDnTaBpBx0KJlJWl4LqPkRHRqD0VgYj7jjfsy%2BPpQHLanu%2FYog0%2BYe3msqEKhX3M8XACtGxQgVnu4v9HCPhpLh9TYAKo%2BOvSjyTZEvZW9sCPfamS5DBv6jH4hXSK"}],"group":"cf-nel","max_age":604800}', 'NEL': '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}', 'Server': 'cloudflare', 'CF-RAY': '8ab5a54ab80dce67-SIN', 'Content-Encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400'} 
+ body={"id":"ff80818191028543019103cc8aef03d5","name":null,"createdAt":"2024-07-30T13:20:22.255+00:00","data":null} 
+ </msg>
+<msg time="2024-07-30T18:50:22.415218" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>mySession</arg>
+<arg>/objects</arg>
+<arg>json=${body}</arg>
+<arg>headers=${header}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2024-07-30T18:50:21.119908" elapsed="1.295533"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${response.status_code}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-07-30T18:50:22.415937" elapsed="0.001163"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${response.content}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-07-30T18:50:22.417570" elapsed="0.001412"/>
+</kw>
+<kw name="Convert To String" owner="BuiltIn">
+<msg time="2024-07-30T18:50:22.421923" level="INFO">${status_code} = 200</msg>
+<var>${status_code}</var>
+<arg>${response.status_code}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<status status="PASS" start="2024-07-30T18:50:22.419870" elapsed="0.002408"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${status_code}</arg>
+<arg>200</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2024-07-30T18:50:22.423672" elapsed="0.001127"/>
+</kw>
+<status status="PASS" start="2024-07-30T18:50:21.113760" elapsed="1.311824"/>
+</test>
+<status status="PASS" start="2024-07-30T18:50:20.994573" elapsed="1.432785"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="POST Testcase">POST Testcase</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
